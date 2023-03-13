@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NewsApp</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Drew's NewsApp</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Welcome to Drew's U.S. News App (<span id="resultCount"></span> Results)</h1>
+    <div class="row content">
+      <div class="card my-4 mx-2" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-around">
+      <button class="btn btn-primary">
+        < Previous Page</button>
+          <button class="btn btn-primary">Next Page ></button>
+
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script>
+    const fetchNews = async () => {
+      console.log("Fetching news...");
+      var url = 'https://newsapi.org/v2/top-headlines?' +
+        'country=us&' +
+        'apiKey=';
+
+      var req = new Request(url);
+
+      // let a = await fetch(req)
+      // let response = await a.json()
+      // console.log(JSON.stringify(response))
+
+      let response = {
+    "status": "ok",
+    "totalResults": 37,
+    "articles": [
+        {
+            "source": {
+                "id": "the-washington-post",
+                "name": "The Washington Post"
+            },
+            "author": "Emmanuel Felton, Matthew Cappucci",
+            "title": "In California, rain gives way to flooding and evacuations - The Washington Post",
+            "description": "Rescues and evacuations are taking place as the state braces for another wall of rain and snow in the coming days.",
+            "url": "https://www.washingtonpost.com/weather/2023/03/11/california-atmospheric-river/",
+            "urlToImage": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/DSMACOWAIII63E2QPRP4ZVMYVU.jpg&w=1440",
+            "publishedAt": "2023-03-11T21:57:55Z",
+            "content": "Comment on this story\r\nHeavy rains are washing out roads and leading to emergency rescues in central California as the state braces for more storms in the coming days.\r\nThe California National Guard … [+4677 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "CBS Sports"
+            },
+            "author": "",
+            "title": "NFL free agency 2023: Ranking the most intriguing teams from 1-32 heading into start of new league year - CBS Sports",
+            "description": "Which NFL teams will be a must watch as free agency begins? Let's rank them all",
+            "url": "https://www.cbssports.com/nfl/news/nfl-free-agency-2023-ranking-the-most-intriguing-teams-from-1-32-heading-into-start-of-new-league-year/",
+            "urlToImage": "https://sportshub.cbsistatic.com/i/r/2023/02/03/b282e5d7-4ccc-4935-8c85-42efe6df8413/thumbnail/1200x675/a9869ad18a8ed7909f44825e5c5bd0f2/rodgers-us.jpg",
+            "publishedAt": "2023-03-11T20:48:02Z",
+            "content": "The new NFL league year is almost here and teams will be scrambling to get below the salary cap in order to make a run at the top free agents. While the new league year starts Wednesday, all 32 teams… [+19132 chars]"
+        },
+        {
+            "source": {
+                "id": "the-hill",
+                "name": "The Hill"
+            },
+            "author": "Jared Gans",
+            "title": "Five things to know about the Iran-Saudi deal brokered by China - The Hill",
+            "description": "A major breakthrough in international diplomacy was announced Friday when Saudi Arabia and Iran revealed that they had agreed to resume normalized relations in a deal brokered by China. The countries announced the deal in a joint statement, saying Iran and Sa…",
+            "url": "https://thehill.com/policy/international/3895412-five-things-to-know-about-the-iran-saudi-deal-brokered-by-china/",
+            "urlToImage": "https://thehill.com/wp-content/uploads/sites/2/2023/03/AP23070028017685.jpg?w=1280",
+            "publishedAt": "2023-03-11T20:47:00Z",
+            "content": "Skip to content\r\nIn this photo released by Xinhua News Agency, Wang Yi, China’s most senior diplomat, center, presides over a closed meeting between Iran, led by Ali Shamkhani, the secretary of Iran’… [+8853 chars]"
+        },
+        {
+            "source": {
+                "id": "cnn",
+                "name": "CNN"
+            },
+            "author": "Issy Ronald, Jorge Engels, Jessie Gretener",
+            "title": "BBC's flagship soccer show boycotted over Gary Lineker impartiality row - CNN",
+            "description": "The BBC's weekend soccer coverage has been plunged into chaos following its announcement Gary Lineker would \"step back\" from presenting, after he became embroiled in an impartiality row when he criticized British government policy on Twitter.",
+            "url": "https://www.cnn.com/2023/03/11/football/gary-lineker-bbc-impartiality-row-boycott-spt-intl/index.html",
+            "urlToImage": "https://media.cnn.com/api/v1/images/stellar/prod/230311044742-01-gary-lineker-london-030923-restricted.jpg?c=16x9&q=w_800,c_fill",
+            "publishedAt": "2023-03-11T20:37:00Z",
+            "content": "The BBCs weekend soccer coverage has been plunged into chaos following its announcement Gary Lineker would step back from presenting, after he became embroiled in an impartiality row when he criticiz… [+6386 chars]"
+        },
+        {
+            "source": {
+                "id": "cnn",
+                "name": "CNN"
+            },
+            "author": "Jackie Wattles",
+            "title": "Astronaut crew heads home after five-month stay on the International Space Station - CNN",
+            "description": "The four astronauts who make up the Crew-5 team aboard the International Space Station began their return trip home Saturday morning, marking the end of a five-month stay in space.",
+            "url": "https://www.cnn.com/2023/03/11/world/spacex-crew-5-splashdown-saturday-scn/index.html",
+            "urlToImage": "https://media.cnn.com/api/v1/images/stellar/prod/230311022441-01-spacex-nasa-iss-undocking-031123.jpg?c=16x9&q=w_800,c_fill",
+            "publishedAt": "2023-03-11T20:12:00Z",
+            "content": "Sign up for CNNs Wonder Theory science newsletter. Explore the universe with news on fascinating discoveries, scientific advancements and more.\r\nThe four astronauts whomake up the Crew-5 team aboard … [+2856 chars]"
+        },
+        {
+            "source": {
+                "id": "cnn",
+                "name": "CNN"
+            },
+            "author": "Polo Sandoval, Melissa Alonso, Emma Tucker, Andrew Millman",
+            "title": "3 American women missing after crossing Mexico border 2 weeks ago - CNN",
+            "description": "Three American women are believed to be missing in Mexico after they crossed the US border from Texas to sell clothes at a flea market over two weeks ago, police told CNN on Saturday.",
+            "url": "https://www.cnn.com/2023/03/11/us/texas-women-missing-mexico/index.html",
+            "urlToImage": "https://media.cnn.com/api/v1/images/stellar/prod/230311140129-texas-women-missing-mexico-split.jpg?c=16x9&q=w_800,c_fill",
+            "publishedAt": "2023-03-11T20:08:00Z",
+            "content": "Three American women are believed to be missing in Mexico after they crossed the US border from Texas to sell clothes at a flea market over two weeks ago, police told CNN on Saturday.\r\nMarina Perez R… [+2549 chars]"
+        },
+        {
+            "source": {
+                "id": "ign",
+                "name": "IGN"
+            },
+            "author": "Eric Song",
+            "title": "Daily Deals: Mario Day Sales Keep Rolling, Atari LEGO Kit On Sale, and More - IGN",
+            "description": null,
+            "url": "https://www.ign.com/articles/daily-deals-31123",
+            "urlToImage": "https://assets-prd.ignimgs.com/2023/03/06/mario-day-deals-2-ign-mar10-1678100439526.png?width=1280",
+            "publishedAt": "2023-03-11T20:01:26Z",
+            "content": "In today's daily deals, we're keeping the Mario Day party going into the weekend. Check out deals on some of Mario's best Nintendo Switch games, including Super Mario Odyssey, Mario + Rabbids Sparks … [+12266 chars]"
+        },
+        {
+            "source": {
+                "id": "cnn",
+                "name": "CNN"
+            },
+            "author": "Ramishah Maruf, Allison Morrow",
+            "title": "How does a bank collapse in 48 hours? A timeline of the SVB fall - CNN",
+            "description": "This week, the go-to bank for US tech startups came rapidly unglued, leaving its high-powered customers and investors in limbo.",
+            "url": "https://www.cnn.com/2023/03/11/business/svb-bank-collapse-explainer-timeline/index.html",
+            "urlToImage": "https://media.cnn.com/api/v1/images/stellar/prod/230310160759-svb-collapse-explainer.jpg?c=16x9&q=w_800,c_fill",
+            "publishedAt": "2023-03-11T19:27:00Z",
+            "content": "This week, the go-to bank for US tech startups came rapidly unglued, leaving its high-powered customers and investors in limbo. \r\nSilicon Valley Bank, facing a sudden bank run and capital crisis, col… [+3345 chars]"
+        },
+        {
+            "source": {
+                "id": "fox-news",
+                "name": "Fox News"
+            },
+            "author": "Sydney Borchers",
+            "title": "From Katharine Hepburn to Shirley Temple: A look back at Old Hollywood Oscars and little-known trivia - Fox News",
+            "description": "The Academy Awards has seen some of Hollywood's greatest stars take home an Oscar statuette. In honor of Oscars 2023, read on for some little-known trivia and a glimpse of nostalgia.",
+            "url": "https://www.foxnews.com/lifestyle/katharine-hepburn-shirley-temple-look-back-old-hollywood-oscars-little-known-trivia",
+            "urlToImage": "https://static.foxnews.com/foxnews.com/content/uploads/2023/03/Oscar-BTN-split-2.jpg",
+            "publishedAt": "2023-03-11T18:33:00Z",
+            "content": "The 95th Academy Awards are just around the corner and some of the greatest stars in cinematic history have taken home an Oscar statuette.\r\nFrom 1929, the year of the very first ceremony, to postpone… [+9703 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "The Times of Israel"
+            },
+            "author": null,
+            "title": "Anti-overhaul protesters call to turn up heat as over 300,000 estimated at rallies - The Times of Israel",
+            "description": "Organizers claim half a million attend weekly protests, mark Thursday as 'day of escalating resistance'; coalition scheduled to drive contentious bills through Knesset committee",
+            "url": "https://www.timesofisrael.com/anti-overhaul-protesters-call-to-turn-up-heat-as-over-300000-estimated-at-rallies/",
+            "urlToImage": "https://static.timesofisrael.com/www/uploads/2023/03/000_33AZ7TR-e1678563238710-1024x640.jpg",
+            "publishedAt": "2023-03-11T18:31:31Z",
+            "content": "More than 300,000 Israelis rallied Saturday night across the country in the tenth consecutive week of demonstrations against the government’s efforts to radically overhaul the judicial system. Organi… [+8676 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Variety"
+            },
+            "author": "Jordan Moreau",
+            "title": "‘Scream VI’ Directors Hid Themselves in the Subway Scene, Plus 50 More Easter Eggs Explained (EXCLUSIVE) - Variety",
+            "description": "SPOILER ALERT: This interview contains spoilers from “Scream VI,” now playing in theaters. The casual horror fan probably noticed a few iconic masks and monsters in the “Scre…",
+            "url": "https://variety.com/2023/film/features/scream-6-easter-eggs-references-directors-1235550063/",
+            "urlToImage": "https://variety.com/wp-content/uploads/2023/03/scream-6-subway-chase-scene-costumes-1678480219661.webp?w=1000&h=563&crop=1",
+            "publishedAt": "2023-03-11T18:03:00Z",
+            "content": "SPOILER ALERT: This interview contains spoilers from “Scream VI,” now playing in theaters.\r\nThe casual horror fan probably noticed a few iconic masks and monsters in the “Scream VI” subway scene: The… [+7604 chars]"
+        },
+        {
+            "source": {
+                "id": "usa-today",
+                "name": "USA Today"
+            },
+            "author": "Alyssa Barbieri",
+            "title": "Bears trade No. 1 to Panthers: Experts hand out grades for Chicago - Chicago Bears Wire",
+            "description": "Here’s a collection of grades for the Bears’ trade of the No. 1 pick to the Panthers, where experts applauded the move for Chicago.",
+            "url": "https://bearswire.usatoday.com/lists/bears-panthers-trade-nfl-draft-grades-expert-picks/",
+            "urlToImage": "https://bearswire.usatoday.com/wp-content/uploads/sites/63/2023/01/1457188268.jpg?w=1024&h=576&crop=1",
+            "publishedAt": "2023-03-11T17:40:00Z",
+            "content": "We know Justin Fields can connect on the deep bombs, and we know he can take off with his legs when his pocket breaks down. But to take his game to the next level, he has to become a consistent inter… [+1238 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "The Guardian"
+            },
+            "author": "Guardian staff reporter",
+            "title": "Three Texas women sued for wrongful death after aiding in abortion - The Guardian",
+            "description": "Man claims they helped his now-ex-wife obtain medication for an abortion in Texas in latest test of state enforced bans",
+            "url": "https://www.theguardian.com/world/2023/mar/11/texas-women-sued-wrongful-death-abortion",
+            "urlToImage": "https://i.guim.co.uk/img/media/4477d7f4437586258dfe6f1e2933c2416c8fdfc4/0_191_5422_3254/master/5422.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=df9f62f73ea22377f26971bade218110",
+            "publishedAt": "2023-03-11T17:18:00Z",
+            "content": "Three women in Texas are being sued for wrongful death by a man who claims they helped his now-ex-wife obtain medication for an abortion. Its another test of state-enforced bans since the US supreme … [+2119 chars]"
+        },
+        {
+            "source": {
+                "id": "techcrunch",
+                "name": "TechCrunch"
+            },
+            "author": "Mike Butcher",
+            "title": "SVB contagion: UK arm shuts down, government scrambles and startups brace for the worst - TechCrunch",
+            "description": "As of late Thursday night and Friday morning, the fallout from the shutdown of Silicon Valley Bank in the US had reached the shores of the UK and Europe. Yesterday afternoon, the Bank of England sought a court order to place Silicon Valley Bank UK Limited — t…",
+            "url": "https://techcrunch.com/2023/03/11/svb-contagion-uk-arm-shuts-down-government-scrambles-and-startups-brace-for-the-worst/",
+            "urlToImage": "https://techcrunch.com/wp-content/uploads/2023/03/GettyImages-1472604903.jpg?resize=1200,886",
+            "publishedAt": "2023-03-11T17:15:00Z",
+            "content": "As of late Thursday night and Friday morning, the fallout from the shutdown of Silicon Valley Bank in the US had reached the shores of the UK and Europe. Yesterday afternoon, the Bank of England soug… [+10065 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "Page Six"
+            },
+            "author": "Tamantha Ryan",
+            "title": "Hailey Bieber marks 1-year anniversary of her 'life-changing' mini-stroke - Page Six",
+            "description": "“Can’t believe it’s been 1 year since I suffered a mini stroke that led to my PFO [patent foramen ovale] diagnosis,” she wrote on Instagram Friday.",
+            "url": "https://pagesix.com/2023/03/11/hailey-bieber-marks-1-year-anniversary-of-her-mini-stroke/",
+            "urlToImage": "https://pagesix.com/wp-content/uploads/sites/3/2023/03/NYPICHPDPICT000008044323.jpg?quality=75&strip=all&w=1200",
+            "publishedAt": "2023-03-11T17:00:00Z",
+            "content": "Hailey Bieber is celebrating one year since her “life-changing” mini-stroke took place.\r\n“Can’t believe it’s been 1 year since I suffered a mini stroke that led to my PFO [patent foramen ovale] diagn… [+2327 chars]"
+        },
+        {
+            "source": {
+                "id": "al-jazeera-english",
+                "name": "Al Jazeera English"
+            },
+            "author": "Al Jazeera",
+            "title": "Wagner mercenary chief demands more ammunition for Bakhmut battle - Al Jazeera English",
+            "description": "Chief of Russian mercenary group says his forces are close to the centre of front-line city in eastern Ukraine.",
+            "url": "https://www.aljazeera.com/news/2023/3/11/wagner-says-russian-fighters-near-central-bakhmut-killing-zone",
+            "urlToImage": "https://www.aljazeera.com/wp-content/uploads/2023/03/2023-03-11T152748Z_897297686_RC2NRZ98S2EU_RTRMADP_3_UKRAINE-CRISIS-TANKS.jpg?resize=1920%2C1440",
+            "publishedAt": "2023-03-11T16:47:28Z",
+            "content": "The chief of Russian mercenary group Wagner has said that his forces are close to the centre of the front-line city of Bakhmut.\r\nIn a video posted on messaging app Telegram on Saturday, Yevgeny Prigo… [+3827 chars]"
+        },
+        {
+            "source": {
+                "id": "fox-news",
+                "name": "Fox News"
+            },
+            "author": "Fox News Staff",
+            "title": "Biden 'dragging his feet' on COVID origins intel because it will 'open Pandora's box,' Kat Cammack says - Fox News",
+            "description": "Rep. Kat Cammack, R-Fla., argued President Biden's hesitancy to decide on whether to declassify intel on COVID origins is because it will 'open Pandora's box.'",
+            "url": "https://www.foxnews.com/media/biden-dragging-feet-covid-origins-intel-because-will-open-pandoras-box-kat-cammack-says",
+            "urlToImage": "https://static.foxnews.com/foxnews.com/content/uploads/2022/01/Joe-Biden-COVID-19-Vaccine.jpg",
+            "publishedAt": "2023-03-11T16:45:00Z",
+            "content": "After the House and Senate passed a bill requiring the Biden administration to declassify intelligence on the COVID origins, President Biden dodged questions from reporters about his decision Friday.… [+1232 chars]"
+        },
+        {
+            "source": {
+                "id": "cnn",
+                "name": "CNN"
+            },
+            "author": "Nick Valencia, Paradise Afshar",
+            "title": "'Cop City' protester's hands were raised when fatally shot by officers, family says - CNN",
+            "description": "A \"Cop City\" protester's hands were raised when law enforcement officers who were attempting to clear the site of a planned police and fire training facility near Atlanta opened fire, an autopsy commissioned by the activist's family found, attorneys say.",
+            "url": "https://www.cnn.com/2023/03/11/us/cop-city-atlanta-protester-autopsy/index.html",
+            "urlToImage": "https://media.cnn.com/api/v1/images/stellar/prod/230122001516-01-manuel-esteban-paez-teran-memorial-012123.jpg?c=16x9&q=w_800,c_fill",
+            "publishedAt": "2023-03-11T16:27:00Z",
+            "content": "A Cop City protesters hands were raised when law enforcement officers who were attempting to clear the site of a planned police and fire training facility near Atlanta opened fire, an autopsy commiss… [+4062 chars]"
+        },
+        {
+            "source": {
+                "id": null,
+                "name": "CNBC"
+            },
+            "author": "Emma Kinery",
+            "title": "Show me the money: The highest revenue raising taxes in Biden's proposed budget - CNBC",
+            "description": "President Joe Biden released his 2024 budget plan Thursday which promises to cut the deficit by $3 trillion over the next decade.",
+            "url": "https://www.cnbc.com/2023/03/11/show-me-the-money-the-highest-revenue-raising-taxes-in-bidens-proposed-budget.html",
+            "urlToImage": "https://image.cnbcfm.com/api/v1/image/107206710-1678467319058-gettyimages-1472578826-109a0010_bolpilig.jpeg?v=1678551305&w=1920&h=1080",
+            "publishedAt": "2023-03-11T16:15:05Z",
+            "content": "U.S. President Joe Biden (C) delivers remarks on the February jobs report with Council of Economic Advisers Chair Cecilia Rouse (L) and National Economic Council Director Lael Brained in the Roosevel… [+3611 chars]"
+        },
+        {
+            "source": {
+                "id": "fox-news",
+                "name": "Fox News"
+            },
+            "author": "Thomas Catenacci",
+            "title": "Biden expected to approve enormous oil drilling project in blow to climate activists: 'Complete betrayal' - Fox News",
+            "description": "President Biden is reportedly green-lighting a massive oil drilling project that climate activists have dubbed a \"carbon bomb\" and lawmakers have cheered for its economic benefits.",
+            "url": "https://www.foxnews.com/politics/biden-expected-approve-enormous-oil-drilling-project-blow-climate-activists-complete-betrayal",
+            "urlToImage": "https://static.foxnews.com/foxnews.com/content/uploads/2020/09/joe-biden-oil-field-2.jpg",
+            "publishedAt": "2023-03-11T16:09:00Z",
+            "content": "The Biden administration is expected to soon push ahead with a massive northern Alaska oil drilling project that is forecasted to create thousands of jobs and 600 million barrels of oil over its 30-y… [+6795 chars]"
+        }
+    ]
+}
+      console.log(response)
+      let str = ""
+      resultCount.innerHTML = response.totalResults
+      for (let item of response.articles){
+        str = str + `<div class="card my-4 mx-2" style="width: 18rem;">
+        <img src="${item.urlToImage}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${item.title}</h5>
+          <p class="card-text">${item.description}</p>
+          <a href="${item.url}" target="_blank" class="btn btn-primary">Read article</a>
+        </div>
+      </div>`
+      }
+      document.querySelector(".content").innerHTML = str
+    }
+    fetchNews ()
+  </script>
+</body>
+
+</html>
